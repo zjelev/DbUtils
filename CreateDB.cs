@@ -25,7 +25,9 @@ namespace DbUtils {
             this.dbName = dbName;
             string createDB = $"CREATE DATABASE {dbName}";
             string useDB = $"USE {dbName}";
-
+            
+            // todo: wrap every ConnectionManager and SqlTransaction in using {}
+            
             using SqlConnection dbConn = new SqlConnection(this.conn);
             dbConn.Open();
             var dbExists = new Server().Databases.Contains(dbName);
